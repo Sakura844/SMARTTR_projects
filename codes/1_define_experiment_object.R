@@ -4,7 +4,6 @@
 install.packages("SMARTTR")
 install.packages("magrittr")
 install.packages("dplyr")
-install.packages("/private/var/folders/lx/yxlnvzs96291fgg1fvcnkqf80000gn/T/RtmpPYRBfK/downloaded_packages/SMARTTR_1.0.1.tar.gz", repos = NULL, type = "source")
 library(SMARTTR)
 library(magrittr)
 library(dplyr)
