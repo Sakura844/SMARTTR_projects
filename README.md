@@ -1,2 +1,1 @@
-# git-test
-Sakura1
+# Actual code of network analysis using SMARTTR. 
