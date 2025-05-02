@@ -2,7 +2,6 @@ library(SMARTTR)
 library(ggplot2)
 library(ggraph)
 
-# Load dataset
 # Replace the save path with a new save path on your computer
 load("/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/opioid_labdata_new.RData") # Edit this path
 attr(opioid, "info")$output_path <- "/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR" #Edit this path
