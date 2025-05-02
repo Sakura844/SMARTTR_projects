@@ -12,7 +12,6 @@ library(dplyr)
 opioid <- experiment(experiment_name = "opioid",
                          channels = "cfos",       # If you have more than one channel to import, set this to a character vector, e.g. c("cfos", "eyfp")
                          output_path = "/Users/saccyann/Documents/Sakura_networkanalysis") #Set this to a path location where you want your figures/analysis output to save, e.g. "P:\\DENNYLABV\\Michelle_Jin\\experiment\\folder"
-# output_path = tempdir()) #Set this to a path location where you want your figures/analysis output to save, e.g. "P:\\DENNYLABV\\Michelle_Jin\\experiment\\folder"
 print(opioid)
 
 #import externally mapped datasets
@@ -46,6 +45,7 @@ opioid$combined_normalized_counts$cfos <- opioid$combined_normalized_counts$cfos
 opioid <- find_outlier_counts(opioid, by = c("group"), n_sd = 2, remove = TRUE, log = TRUE)
 opioid <- enough_mice_per_group(opioid, by = c("group"), min_n = 4, remove = TRUE, log = TRUE)
 
+#save
 save(opioid, file = "/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/opioid_labdata_check.RData")
 save_experiment(opioid, timestamp = TRUE)
 print("success")
