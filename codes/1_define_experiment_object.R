@@ -1,5 +1,3 @@
-#Follow this website:https://mjin1812.github.io/SMARTTR/articles/Part5.ImportingExternalDatasets.html
-#For details:https://github.com/mjin1812/SMARTTR/tree/9e629dee5f5a49e6c9083bdc30016a4c926e033f/.github
 # Install necessary packages
 install.packages("SMARTTR")
 install.packages("magrittr")
