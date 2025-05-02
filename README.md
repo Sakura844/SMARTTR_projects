@@ -14,4 +14,4 @@ https://github.com/mjin1812/SMARTTR/tree/9e629dee5f5a49e6c9083bdc30016a4c926e033
 Change some paths and parameters to excute. 
  - "1_define_experiment_object.R" should be excuted first.
  - "2_within_single_condition.R" is for analysis within each condition such as saline, acute morphine or chronic morphine. This code creates heaetmaps and network plots.
- - "3_..." is for analysis between 2 conditions such as saline_vs_acute_morphine. This code creates parallel plots and volcano plots.
+ - "3_corr_between_several_conditions.R" is for analysis between 2 conditions such as saline_vs_acute_morphine. This code creates parallel plots and volcano plots.
