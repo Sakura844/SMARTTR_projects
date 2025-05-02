@@ -2,11 +2,13 @@
 https://github.com/mjin1812/SMARTTR/tree/9e629dee5f5a49e6c9083bdc30016a4c926e033f
 
 ＜data folder＞
- - "cellcounts_per_acronyms.csv":
+ - "cellcounts_per_acronyms.csv"
    Format is specified in following webpage.
    https://mjin1812.github.io/SMARTTR/articles/Part5.ImportingExternalDatasets.html
    Please put csv file of your own experiment data on your environment.
- - Rdata are just samples. These experiment data should be created after you excute "1_define_experiment_object.R"
+   
+ - "rejected_acronyms.RData"
+   This file is an example of how to specify the acronims that you use for this analysis.
    
 ＜codes folder＞
 Change some paths and parameters to excute. 
