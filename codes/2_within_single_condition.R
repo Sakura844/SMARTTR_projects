@@ -3,28 +3,29 @@ library(ggplot2)
 library(ggraph)
 
 # Load dataset
-load("/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/opioid_labdata_new.RData") # Edit this path
 # Replace the save path with a new save path on your computer
+load("/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/opioid_labdata_new.RData") # Edit this path
 attr(opioid, "info")$output_path <- "/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR" #Edit this path
 
 # Create correlation matrices
 ontology <- "unified"
 groups <- c("Saline", "Acute_Morphine", "Chronic_Morphine", "Chronic_Morphine_21", "Withdrawal_Morphine", "Withdrawal_Morphine_21")
 for (g in groups) {
+  #Get regional cross correlations and their p-values. You can add region_order, anatomical.order, method as arguments.
   opioid <- get_correlations(opioid,
-                                 by = c("group"),
-                                 values = g,
-                                 channels = "cfos",
-                                 p_adjust_method = "fdr",
-                                 ontology = ontology,
-                                 alpha =  0.05)
+                                 by = c("group"),         #(str) Attribute names to group by, e.g. c("sex", "group")
+                                 values = g,              #(str) The respective values of the attributes entered for the `by` parameter to generate a specific analysis group,e.g.values = c("female", "AD"). Length must be the same as `by`.
+                                 channels = "cfos",       #(str) If you use more than one channel, you can use list. e.g. c("cfos", "eyfp", "colabel")
+                                 p_adjust_method = "fdr", #(bool or str, default = "none") This parameter is fed into the p.adjust function. Options: c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY",  "fdr", "none")
+                                 ontology = ontology,     #(str, default = "allen") Region ontology to use. options = "allen" or "unified"
+                                 alpha =  0.05)           #(num, default = 0.05) The alpha level for significance applied AFTER p-adjustment.
 }
 #Check
 View(get_correlations)
 print(opioid)
 summary(opioid)
 
-# Plot correlation matrices
+# fine tuning the aesthetics of the figure
 theme.hm <- ggplot2::theme(axis.text.x = element_text(hjust = 1, vjust = 0.5, angle = 90, size = 8),
                            axis.text.y = element_text(vjust = 0.5, size = 8),
                            plot.title = element_text(hjust = 0.5, size = 36),
