@@ -2,11 +2,10 @@ library(SMARTTR)
 library(ggplot2)
 library(ggraph)
 
-# Load example dataset
-load("/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/opioid_labdata_new.RData") # Edit this path
 # Replace the save path with a new save path on your computer
+load("/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/opioid_labdata_new.RData") # Edit this path
 attr(opioid, "info")$output_path <- "/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR" #Edit this path
-output_dir <- "/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/figures/Parallel/testpdf"
+output_dir <- "/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/figures/Parallel/testpdf" #Edit this path
 
 # Create correlation matrices
 ontology <- "unified"
@@ -14,7 +13,7 @@ groups <- c("Saline", "Acute_Morphine", "Chronic_Morphine",
             "Chronic_Morphine_21", "Withdrawal_Morphine", "Withdrawal_Morphine_21")
 pairs <- combn(groups, 2)
 
-# set names "pair1_vs_pair2"
+# Create the set of names "pair1_vs_pair2"
 results_name <- apply(pairs, 2, function(x) paste(x[1], "vs", x[2], sep = "_"))
 
 # Get regional cross correlations and their p-values in a correlation list object
@@ -33,7 +32,7 @@ for (g in groups) {
 group_pairs <- combn(groups, 2, simplify = FALSE)
 print(group_pairs)
 
-#"correlation_diff_permutation":a permutation analysis to compare the region pairwise correlation coefficients between two different analysis groups.
+#Permutation analysis to compare the region pairwise correlation coefficients between two different analysis groups.
 results <- list()
 
 for (pair in group_pairs) {
@@ -55,7 +54,7 @@ for (pair in group_pairs) {
 }
 print(results_name)
 
-# Plot correlation matrices
+# Fine tuning the graph aesthetics
 theme.hm <- ggplot2::theme(axis.text.x = element_text(hjust = 1, vjust = 0.5, angle = 90, size = 8),
                            axis.text.y = element_text(vjust = 0.5, size = 8),
                            plot.title = element_text(hjust = 0.5, size = 36),
@@ -70,9 +69,7 @@ theme.hm <- ggplot2::theme(axis.text.x = element_text(hjust = 1, vjust = 0.5, an
                            strip.background = element_rect(color = "black", fill = "grey"))
 
 # volcano_plot
-#extensions <- c(".png", ".pdf")
 for (pair in results_name) {
-    # volcano_plot
     volcano_plot(
       opioid, 
       permutation_comparison = pair,
@@ -87,6 +84,9 @@ for (pair in results_name) {
       image_ext = ".pdf"
     )
 }
+                      
+#If you need pdf of graphs, you can run the following codes.
+#extensions <- c(".png", ".pdf")
 # for (pair in results_name) {
 #   for (ext in extensions){
 #   volcano_plot(
