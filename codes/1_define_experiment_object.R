@@ -6,8 +6,8 @@ library(SMARTTR)
 library(magrittr)
 library(dplyr)
 
-formatCsv <- function(original_path = NULL, #Set a original csv file path
-                       set_path = NULL, #Set a new path for cleaned csv file
+formatCsv <- function(original_path = NULL, 
+                       set_path = NULL,
                        original_col=NULL, #set 6-14 words for columns to be used in a specified order
                        set_col = c("mouse_ID", "acronym", "name", "counts", "volume.mm3", "normalized.count.by.volume") #you can add ("group", "sex", "genotype", "age", "strain", "drug", "reporter", "cohort") between mouse_ID and acronym
 ){
@@ -43,8 +43,8 @@ formatCsv <- function(original_path = NULL, #Set a original csv file path
 
 #excute setcolumns
 formatCsv(
-  original_path = "/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/data/Ex_639_Ch2_stitched_long_merge_Annotated_counts_with_leaf_with_density.csv",
-  set_path = "/Users/saccyann/Documents/cleaned_data.csv",
+  original_path = "/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/data/Ex_639_Ch2_stitched_long_merge_Annotated_counts_with_leaf_with_density.csv", #Set a original csv file path
+  set_path = "/Users/saccyann/Documents/cleaned_data.csv",　#Set a new path for cleaned csv file
   original_col = c("ID", "Condition", "Sex", "acronym", "name", "newcounts", "newsize", "density; normalized"),
   set_col = c("mouse_ID", "group", "sex", "acronym", "name", "counts", "volume.mm3", "normalized.count.by.volume")
 )
