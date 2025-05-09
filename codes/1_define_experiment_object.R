@@ -1,5 +1,8 @@
 # Install necessary packages
-install.packages("SMARTTR")
+install.packages(c(
+  "ggplot2", "ggrepel", "tidyr", "tidygraph", "igraph", "ggraph",
+  "stringdist", "readr", "readxl", "Hmisc", "forcats")) #This might be specifically required to my environment 
+install.packages("SMARTTR", repos = "https://mjin1812.github.io/drat")
 install.packages("magrittr")
 install.packages("dplyr")
 library(SMARTTR)
