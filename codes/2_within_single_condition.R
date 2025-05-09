@@ -2,22 +2,23 @@ library(SMARTTR)
 library(ggplot2)
 library(ggraph)
 
+
+# Load example dataset
+load("/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/opioid_labdata_250509.RData") # Edit this path
 # Replace the save path with a new save path on your computer
-load("/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/opioid_labdata_new.RData") # Edit this path
-attr(opioid, "info")$output_path <- "/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR" #Edit this path
+attr(opioid, "info")$output_path <- "/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/figures/forNewData" #Edit this path
 
 # Create correlation matrices
 ontology <- "unified"
-groups <- c("Saline", "Acute_Morphine", "Chronic_Morphine", "Chronic_Morphine_21", "Withdrawal_Morphine", "Withdrawal_Morphine_21")
+groups <- c("Saline", "Acute_Morphine","Acute_Cocaine") #Edit this condition groups
 for (g in groups) {
-  #Get regional cross correlations and their p-values. You can add region_order, anatomical.order, method as arguments.
   opioid <- get_correlations(opioid,
-                                 by = c("group"),         #(str) Attribute names to group by, e.g. c("sex", "group")
-                                 values = g,              #(str) The respective values of the attributes entered for the `by` parameter to generate a specific analysis group,e.g.values = c("female", "AD"). Length must be the same as `by`.
-                                 channels = "cfos",       #(str) If you use more than one channel, you can use list. e.g. c("cfos", "eyfp", "colabel")
-                                 p_adjust_method = "fdr", #(bool or str, default = "none") This parameter is fed into the p.adjust function. Options: c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY",  "fdr", "none")
-                                 ontology = ontology,     #(str, default = "allen") Region ontology to use. options = "allen" or "unified"
-                                 alpha =  0.05)           #(num, default = 0.05) The alpha level for significance applied AFTER p-adjustment.
+                                 by = c("group"),
+                                 values = g,
+                                 channels = "cfos",
+                                 p_adjust_method = "fdr",
+                                 ontology = ontology,
+                                 alpha =  0.05)
 }
 #Check
 View(get_correlations)
