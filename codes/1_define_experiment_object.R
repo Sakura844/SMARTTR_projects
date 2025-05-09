@@ -48,7 +48,7 @@ formatCsv <- function(original_path = NULL, #Original csv file path
 formatCsv(
   original_path = "/Users/saccyann/Documents/Sakura_networkanalysis/SMARTTR/data/Ex_639_Ch2_stitched_long_merge_Annotated_counts_with_leaf_with_density.csv",
   set_path = "/Users/saccyann/Documents/cleaned_data.csv",　
-  original_col = c("ID", "Condition", "Sex", "acronym", "name", "newcounts", "newsize", "density; normalized"),
+  original_col = c("ID", "Condition", "Sex", "acronym", "name", "newcounts", "newsize", "density; normalized"), #please do not include blank or special symbols in columns
   set_col = c("mouse_ID", "group", "sex", "acronym", "name", "counts", "volume.mm3", "normalized.count.by.volume")
 )
   
