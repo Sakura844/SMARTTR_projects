@@ -23,7 +23,7 @@ formatCsv <- function(original_path = NULL, #Original csv file path
     stop("original_col and set_col must be the same length.")
   }
   
-  data <- read.csv(original_path, stringsAsFactors = FALSE)
+  data <- read.csv(original_path, check.names = FALSE, stringsAsFactors = FALSE)
   
   # check if factors of original_col exist in data
   if (!all(original_col %in% names(data))) {
